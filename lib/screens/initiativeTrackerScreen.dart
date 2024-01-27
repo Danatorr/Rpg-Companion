@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rpg_companion/components/initiativeCard.dart';
+import 'package:rpg_companion/data/initiative_inherited.dart';
+import 'package:rpg_companion/screens/newCardScreen.dart';
 
 class InitiativeTrackerScreen extends StatefulWidget {
   const InitiativeTrackerScreen({super.key});
@@ -23,19 +24,18 @@ class _InitiativeTrackerScreenState extends State<InitiativeTrackerScreen> {
         ),
         title: Text("Initiative Tracker"),
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            InitiativeCard("Teste", 1),
-          ],
+      body: Center(
+        child: ListView(
+          children:  InitiativeInherited.of(context).initiativeList,
         ),
       ),
-      floatingActionButton: const FloatingActionButton(
-        onPressed: null,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (contextNew) => NewCardScreen(initiativeContext: context,)));
+        },
         backgroundColor: Colors.red,
-        child: Icon(
+        child: const Icon(
           Icons.add,
           color: Colors.white,
         ),

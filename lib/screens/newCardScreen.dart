@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:rpg_companion/data/initiative_inherited.dart';
 
 class NewCardScreen extends StatefulWidget {
-  const NewCardScreen({super.key});
+  const NewCardScreen({super.key, required this.initiativeContext});
+
+  final BuildContext initiativeContext;
 
   @override
   State<NewCardScreen> createState() => _NewCardScreenState();
@@ -67,13 +70,15 @@ class _NewCardScreenState extends State<NewCardScreen> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
+                    InitiativeInherited.of(widget.initiativeContext).addInitiative("Teste", 3);
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Adding Initiative')),
                     );
                   }
+                  Navigator.pop(context);
                 },
                 child: const Text("Add"),
-              )
+              ),
             ],
           ),
         ),

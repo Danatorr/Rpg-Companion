@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rpg_companion/components/initiativeTrackerScreen.dart';
-import 'package:rpg_companion/components/newCardScreen.dart';
+import 'package:rpg_companion/data/initiative_inherited.dart';
+import 'package:rpg_companion/screens/initiativeTrackerScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Initiative Tracker'),
+      home: InitiativeInherited(
+          child: const MyHomePage(title: 'Initiative Tracker')),
     );
   }
 }
@@ -31,10 +32,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
-
-    return NewCardScreen();
+    return InitiativeTrackerScreen();
   }
 }
