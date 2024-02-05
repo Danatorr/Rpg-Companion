@@ -4,7 +4,11 @@ class InitiativeCard extends StatefulWidget {
   final String name;
   final int initiativeNumber;
 
-  const InitiativeCard(this.name, this.initiativeNumber, {super.key});
+  //const InitiativeCard({required ValueKey<UniqueKey> valueKey, required this.name, required this.initiativeNumber})
+  //    : super(key: valueKey);
+
+  const InitiativeCard({required ValueKey valueKey, required this.name, required this.initiativeNumber})
+      : super(key: valueKey);
 
   @override
   State<InitiativeCard> createState() => _InitiativeCardState();

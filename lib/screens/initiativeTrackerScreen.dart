@@ -18,11 +18,11 @@ class _InitiativeTrackerScreenState extends State<InitiativeTrackerScreen> {
         backgroundColor: Colors.red,
         centerTitle: true,
         titleTextStyle: const TextStyle(
-          color: Colors.white,
+          color: Colors.  white,
           fontWeight: FontWeight.bold,
           fontSize: 32,
         ),
-        title: Text("Initiative Tracker"),
+        title: const Text("Initiative Tracker"),
       ),
       body: Center(
         child: ListView(

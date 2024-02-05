@@ -11,6 +11,9 @@ class NewCardScreen extends StatefulWidget {
 }
 
 class _NewCardScreenState extends State<NewCardScreen> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController initiativeNumberController = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -35,6 +38,7 @@ class _NewCardScreenState extends State<NewCardScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               TextFormField(
+                controller: nameController,
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   hintText: "Name",
@@ -51,6 +55,7 @@ class _NewCardScreenState extends State<NewCardScreen> {
                 },
               ),
               TextFormField(
+                controller: initiativeNumberController,
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   hintText: "Initiative Value",
@@ -70,7 +75,9 @@ class _NewCardScreenState extends State<NewCardScreen> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    InitiativeInherited.of(widget.initiativeContext).addInitiative("Teste", 3);
+                    InitiativeInherited.of(widget.initiativeContext)
+                        .addInitiative(nameController.text,
+                            int.parse(initiativeNumberController.text));
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Adding Initiative')),
                     );
