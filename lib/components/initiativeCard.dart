@@ -30,11 +30,11 @@ class _InitiativeCardState extends State<InitiativeCard> {
               children: [
                 Text(
                   widget.name,
-                  style: cardTextStyle(),
+                  style: cardTextStyle,
                 ),
                 Text(
                   widget.initiativeNumber.toString(),
-                  style: cardTextStyle(),
+                  style: cardTextStyle,
                 ),
               ],
             ),
@@ -45,7 +45,7 @@ class _InitiativeCardState extends State<InitiativeCard> {
   }
 }
 
-TextStyle cardTextStyle () => const TextStyle(
+TextStyle cardTextStyle = const TextStyle(
     color: Colors.white,
     fontSize: 20,
     fontWeight: FontWeight.bold
