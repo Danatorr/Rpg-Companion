@@ -1,16 +1,9 @@
-# rpg_companion
+## rpg_companion
 
 Your best friend while playing TTRPG!
 
-## Getting Started
+## Initiative Tracker
 
-This project is a starting point for a Flutter application.
+The only current function of this app is to track initiatives
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="154" alt="image" src="https://github.com/Danatorr/Rpg-Companion/assets/20666482/b380648f-5fb6-4281-80fb-227801484f88">
