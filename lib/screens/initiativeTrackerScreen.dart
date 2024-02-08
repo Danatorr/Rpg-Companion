@@ -13,22 +13,27 @@ class InitiativeTrackerScreen extends StatefulWidget {
 class _InitiativeTrackerScreenState extends State<InitiativeTrackerScreen> {
   @override
   Widget build(BuildContext context) {
+    final inherited = InitiativeInherited.of(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
         centerTitle: true,
         titleTextStyle: const TextStyle(
-          color: Colors.  white,
+          color: Colors.white,
           fontWeight: FontWeight.bold,
           fontSize: 32,
         ),
         title: const Text("Initiative Tracker"),
       ),
-      body: Center(
-        child: ListView(
-          children:  InitiativeInherited.of(context).initiativeList,
-        ),
-      ),
+      body: ListenableBuilder(
+          listenable: inherited.notifier!,
+          builder: (context, child) {
+            return ListView.builder(
+              itemCount: inherited.notifier!.value.length,
+              itemBuilder: (context, index) => inherited.notifier!.value[index],
+            );
+          }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(
