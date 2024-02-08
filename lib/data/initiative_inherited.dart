@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../components/initiativeCard.dart';
 
-class InitiativeInherited extends InheritedWidget {
+class InitiativeInherited extends InheritedNotifier<ValueNotifier<List<InitiativeCard>>> {
   InitiativeInherited({
     super.key,
     required Widget child,
-  }) : super(child: child);
+  }) : super(child: child, notifier: ValueNotifier([]));
 
-  List<InitiativeCard> initiativeList = [];
 
   static InitiativeInherited of(BuildContext context) {
     final InitiativeInherited? result =
@@ -18,22 +17,19 @@ class InitiativeInherited extends InheritedWidget {
   }
 
   void addInitiative(String name, int initiativeNumber) {
-    initiativeList.add(InitiativeCard(
+    print("adding name $name, initiative $initiativeNumber");
+    notifier!.value.add(InitiativeCard(
       valueKey: ValueKey<UniqueKey>(UniqueKey()),
       name: name,
       initiativeNumber: initiativeNumber,
     ));
 
-    print(initiativeList.first.initiativeNumber);
-    print(initiativeList.first.key);
-    initiativeList
+    notifier!.value
         .sort((a, b) => b.initiativeNumber.compareTo(a.initiativeNumber));
-    print(initiativeList.first.key);
-    print(initiativeList.first.initiativeNumber);
 
-    for (var element in initiativeList) {
-      print(element.initiativeNumber);
-    }
+    notifier!.value.forEach(print);
+
+    notifier!.notifyListeners();
   }
 
   void deleteInitiative() {
@@ -43,6 +39,6 @@ class InitiativeInherited extends InheritedWidget {
 
   @override
   bool updateShouldNotify(InitiativeInherited oldWidget) {
-    return oldWidget.initiativeList.length != initiativeList.length;
+    return true;
   }
 }
